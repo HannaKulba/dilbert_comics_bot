@@ -30,7 +30,7 @@ class CustomSkype:
         if 'No chat with topic' in chat_id:
             print(chat_id)
         else:
-            if Comics().is_last_comics_in_DB:
+            if Comics().is_last_comics_in_DB():
                 print('No new comics :(')
             else:
                 title = Comics().get_last_comics_data()[2]
