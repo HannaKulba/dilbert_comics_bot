@@ -1,6 +1,7 @@
 from bot_project.configurations import Config
 from skpy import Skype, SkypeGroupChat
 from bot_project.comics import Comics
+from bot_project.database import Database
 import urllib.request as saver
 
 
@@ -33,8 +34,10 @@ class CustomSkype:
             if Comics().is_last_comics_in_DB():
                 print('No new comics :(')
             else:
-                title = Comics().get_last_comics_data()[2]
-                image_url = Comics().get_last_comics_data()[3]
+                comics_data = Comics().get_last_comics_data()
+                Database().insert_values(comics_data)
+                title = comics_data[2]
+                image_url = comics_data[3]
                 channel = login.chats.chat(chat_id)
                 image = 'bot_project/images/' + title + '.jpg'
                 saver.urlretrieve('https:' + image_url, image)
