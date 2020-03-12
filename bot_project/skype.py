@@ -4,6 +4,7 @@ from bot_project.comics import Comics
 from bot_project.database import Database
 from bot_project.exchange_rates import MoneyRates
 from bot_project.covid_19 import COVID
+from bot_project.petrol import Petrol
 import urllib.request as saver
 
 
@@ -49,8 +50,10 @@ class CustomSkype:
         login = self.login_to_skype()
         chat_id = self.get_chat_id()
         data = MoneyRates().get_exchange_rates_nb_rb()
+        petrol_prices = Petrol().get_petrol_prices()
         common_info_COVID = COVID().get_common_covid_info()
         belarus_info_COVID = COVID().get_belarus_covid_info()
         channel = login.chats.chat(chat_id)
         channel.sendMsg(data)
+        channel.sendMsg(petrol_prices)
         channel.sendMsg(common_info_COVID + belarus_info_COVID)
