@@ -2,6 +2,8 @@ from bot_project.configurations import Config
 from skpy import Skype, SkypeGroupChat
 from bot_project.comics import Comics
 from bot_project.database import Database
+from bot_project.exchange_rates import MoneyRates
+from bot_project.covid_19 import COVID
 import urllib.request as saver
 
 
@@ -42,3 +44,13 @@ class CustomSkype:
                 image = 'bot_project/images/' + title + '.jpg'
                 saver.urlretrieve('https:' + image_url, image)
                 channel.sendFile(open(image, 'rb'), title, image=True)
+
+    def send_exchange_rates_and_covid_info_to_chat(self):
+        login = self.login_to_skype()
+        chat_id = self.get_chat_id()
+        data = MoneyRates().get_exchange_rates_nb_rb()
+        common_info_COVID = COVID().get_common_covid_info()
+        belarus_info_COVID = COVID().get_belarus_covid_info()
+        channel = login.chats.chat(chat_id)
+        channel.sendMsg(data)
+        channel.sendMsg(common_info_COVID + belarus_info_COVID)
