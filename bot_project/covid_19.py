@@ -10,7 +10,7 @@ def get_covid_page():
 
 
 def get_date():
-    date_info = get_covid_page().find(class_='label-counter').next_element.next_element.string
+    date_info = get_covid_page().find(class_='label-counter').next_element.next_element.next_element.string
     date = str(date_info).split('Last updated:')[1]
     return date
 
