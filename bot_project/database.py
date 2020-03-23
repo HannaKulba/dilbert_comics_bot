@@ -47,9 +47,9 @@ class Database:
     #         connection.commit()
     #
     #
-    # def delete_values(id):
-    #     with connection:
-    #         cursor = connect_to_DB()
+    # def delete_values(self, id):
+    #     with self.connection:
+    #         cursor = self.connect_to_DB()
     #         cursor.execute(
     #             """DELETE FROM dilbert_comics WHERE id='""" + id + """'""")
-    #         connection.commit()
+    #         self.connection.commit()
