@@ -45,10 +45,9 @@ class CustomSkype:
                 image = 'bot_project/images/' + title + '.jpg'
                 saver.urlretrieve('https:' + image_url, image)
                 channel.sendFile(open(image, 'rb'), title, image=True)
+            self.send_exchange_rates_and_covid_info_to_chat(login, chat_id)
 
-    def send_exchange_rates_and_covid_info_to_chat(self):
-        login = self.login_to_skype()
-        chat_id = self.get_chat_id()
+    def send_exchange_rates_and_covid_info_to_chat(self, login, chat_id):
         data = MoneyRates().get_exchange_rates_nb_rb()
         petrol_prices = Petrol().get_petrol_prices()
         common_info_COVID = COVID().get_common_covid_info()
