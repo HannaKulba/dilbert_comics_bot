@@ -31,17 +31,16 @@ class Petrol():
 
     def get_petrol_prices(self):
         today_date = date()
-        petrol_92 = get_petrol_price(2)
-        petrol_95 = get_petrol_price(0)
-        petrol_98 = get_petrol_price(5)
-        dtz = get_petrol_price(1)
-        dt = get_petrol_price(3)
-        gaz = get_petrol_price(4)
+        petrol_92 = get_petrol_price(0)
+        petrol_95 = get_petrol_price(1)
+        petrol_98 = get_petrol_price(2)
+        # dtz = get_petrol_price(1)
+        dt = get_petrol_price(4)
+        gaz = get_petrol_price(3)
         result = 'Цены на топливо на ' + today_date + '\n' + \
                  'АИ-92-К5: ' + petrol_92 + '\n' + \
                  'АИ-95-К5: ' + petrol_95 + '\n' + \
                  'АИ-98-К5: ' + petrol_98 + '\n' + \
-                 'ДТЗ-К5 КЛАСС 2: ' + dtz + '\n' + \
-                 'ДТ-К5: ' + dt + '\n' + \
+                 'ДТ: ' + dt + '\n' + \
                  'ГАЗ ПБА: ' + gaz
         return result
